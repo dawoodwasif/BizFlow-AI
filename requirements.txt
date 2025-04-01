@@ -1,0 +1,10 @@
+rasa-pro
+fastapi
+uvicorn
+PyPDF2
+nltk
+python-dotenv
+openai
+pinecone
+py-trello
+

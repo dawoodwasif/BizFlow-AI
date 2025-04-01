@@ -1,0 +1,32 @@
+version: "3.1"
+
+rules:
+- rule: Immediate Greeting Response
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- rule: Session Termination Protocol
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+- rule: Fallback Handling
+  steps:
+    - intent: nlu_fallback
+    - action: action_default_fallback
+
+# - rule: Mandatory Employee ID Verification
+#   condition:
+#     - active_loop: null
+#     - slot_was_set:
+#         - employee_id: false
+#   steps:
+#     - intent: it_support_request
+#     - action: utter_ask_employee_id
+
+# - rule: HR Escalation Protocol
+#   steps:
+#     - action: action_escalate_to_hr
+#     - active_loop: null
+#     - action: utter_acknowledge_complaint

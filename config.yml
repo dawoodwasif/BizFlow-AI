@@ -1,0 +1,57 @@
+assistant_id: "bizflow-ai-prod-v1"
+language: "en"
+recipe: default.v1
+
+environment:
+  LITELLM_VERBOSE: true
+
+pipeline:
+  - name: WhitespaceTokenizer
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 1
+    max_ngram: 4
+  - name: DIETClassifier
+    epochs: 100
+    constrain_similarities: true
+  - name: EntitySynonymMapper
+  - name: ResponseSelector
+    epochs: 100
+  - name: FallbackClassifier
+    threshold: 0.2
+    ambiguity_threshold: 0.1
+  - name: NLUCommandAdapter
+  - name: CompactLLMCommandGenerator
+    llm:
+      model_group: openai-direct
+    flow_retrieval:
+      embeddings:
+        model_group: openai-embeddings
+    user_input:
+      max_characters: 420
+
+policies:
+  - name: MemoizationPolicy
+    max_history: 10
+  - name: RulePolicy
+    core_fallback_threshold: 0.2
+    core_fallback_action_name: "action_default_fallback"
+  - name: TEDPolicy
+    max_history: 10
+    epochs: 100
+    constrain_similarities: true
+  - name: EnterpriseSearchPolicy
+    llm:
+      model_group: openai-direct
+    embeddings:
+      model_group: openai-embeddings
+    vector_store:
+      type: "faiss"
+      source: "./docs"
+      threshold: 0.2
+    citation_enabled: true
+    max_messages_in_query: 1
+    priority: 5

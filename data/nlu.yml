@@ -1,0 +1,388 @@
+version: "3.1"
+
+nlu:
+# -------------------------
+# Greeting Intents
+# -------------------------
+- intent: greet
+  examples: |
+    - hi
+    - hello
+    - hey
+    - good morning
+    - good afternoon
+    - good evening
+    - hi there
+    - hello there
+    - hey there
+    - greetings
+    - what's up
+    - howdy
+    - hi team
+    - hello bizflow
+    - hey, how are you?
+    - hi, I need some help
+    - hello, can you assist me?
+    - hi, I'm here
+    - hey, I'm available
+    - hello, good to see you
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you later
+    - see you
+    - talk to you later
+    - have a good day
+    - take care
+    - catch you later
+    - farewell
+    - see ya
+    - later
+    - I must go now
+    - signing off
+    - goodnight
+    - bye for now
+    - I have to leave
+    - see you next time
+    - farewell, and thanks
+    - take it easy
+    - see you soon
+
+# -------------------------
+# Inform Sub-Intents
+# -------------------------
+- intent: inform_employee_id
+  examples: |
+    - My employee ID is [EMP-12345](employee_id)
+    - I am [EMP-98765](employee_id)
+    - ID: [EMP-55555](employee_id)
+    - I'm registered as [EMP-00123](employee_id)
+    - Please note my ID: [EMP-11223](employee_id)
+    - My work ID is [EMP-45678](employee_id)
+    - I go by [EMP-87654](employee_id)
+    - Use [EMP-33445](employee_id) as my ID
+    - My employee code is [EMP-99887](employee_id)
+    - I'm known as [EMP-10101](employee_id)
+    - Register me as [EMP-20202](employee_id)
+    - I use the ID [EMP-30303](employee_id)
+    - My work code is [EMP-40404](employee_id)
+    - It’s [EMP-50505](employee_id)
+    - I am [EMP-60606](employee_id)
+    - My ID number is [EMP-70707](employee_id)
+    - Please verify me with [EMP-80808](employee_id)
+    - Note my ID: [EMP-90909](employee_id)
+    - My identification is [EMP-01010](employee_id)
+    - I'm registered under [EMP-11111](employee_id)
+
+- intent: inform_issue
+  examples: |
+    - My laptop is overheating due to a faulty fan [issue](issue)
+    - The system crashes frequently when I try to run applications [issue](issue)
+    - I'm facing a network outage in my area [issue](issue)
+    - I have a problem with software installation on my device [issue](issue)
+    - My computer won't boot up properly [issue](issue)
+    - The VPN connection is unstable and drops constantly [issue](issue)
+    - I can't access my email server [issue](issue)
+    - The printer isn't responding to my print commands [issue](issue)
+    - My application freezes on startup [issue](issue)
+    - There is a persistent error message when I log in [issue](issue)
+    - My screen flickers intermittently [issue](issue)
+    - The update seems to have introduced a bug [issue](issue)
+    - I experience slow performance and lag [issue](issue)
+    - The device shows connectivity problems [issue](issue)
+    - My computer shuts down unexpectedly [issue](issue)
+    - The software installation failed midway [issue](issue)
+    - I keep receiving timeout errors [issue](issue)
+    - My workstation is unresponsive [issue](issue)
+    - There's a hardware malfunction causing errors [issue](issue)
+    - The system is running very slowly [issue](issue)
+
+- intent: inform_meeting_date
+  examples: |
+    - I need a meeting on [2024-03-25](meeting_date)
+    - Schedule a meeting for [2024-04-10](meeting_date)
+    - Book the meeting room on [2024-05-15](meeting_date)
+    - I want a meeting on [2024-06-01](meeting_date)
+    - Let's set up a meeting for [2024-07-20](meeting_date)
+    - My preferred date is [2024-08-30](meeting_date)
+    - I need the room on [2024-09-05](meeting_date)
+    - The meeting should be on [2024-10-12](meeting_date)
+    - I'd like to have a meeting on [2024-11-25](meeting_date)
+    - Please book the room for [2024-12-15](meeting_date)
+    - I want to schedule for [2025-01-10](meeting_date)
+    - The meeting date is [2025-02-20](meeting_date)
+    - Let's have the meeting on [2025-03-05](meeting_date)
+    - Reserve the meeting room for [2025-04-14](meeting_date)
+    - I would like a meeting on [2025-05-22](meeting_date)
+    - Book a meeting for [2025-06-30](meeting_date)
+    - Schedule on [2025-07-11](meeting_date)
+    - Set the meeting for [2025-08-01](meeting_date)
+    - I need a meeting on [2025-09-15](meeting_date)
+    - Reserve a room for [2025-10-05](meeting_date)
+
+- intent: inform_meeting_time
+  examples: |
+    - Let's book the meeting at [09:00](meeting_time)
+    - I prefer [10:30](meeting_time) for the meeting
+    - Schedule it at [13:00](meeting_time)
+    - The meeting should be at [14:30](meeting_time)
+    - Set the meeting for [16:00](meeting_time)
+    - Book it for [09:00](meeting_time)
+    - I need it at [10:30](meeting_time)
+    - Let's set the time at [13:00](meeting_time)
+    - Reserve the room at [14:30](meeting_time)
+    - I want the meeting at [16:00](meeting_time)
+    - Can we do [09:00](meeting_time) for the meeting?
+    - I would like it scheduled at [10:30](meeting_time)
+    - The time should be [13:00](meeting_time)
+    - Please book it at [14:30](meeting_time)
+    - I choose [16:00](meeting_time)
+    - Let’s have the meeting at [09:00](meeting_time)
+    - Arrange it for [10:30](meeting_time)
+    - I want it at [13:00](meeting_time)
+    - Set the time to [14:30](meeting_time)
+    - Schedule for [16:00](meeting_time)
+
+- intent: inform_expense_amount
+  examples: |
+    - The expense is [$250.50](expense_amount)
+    - I have a cost of [$150](expense_amount)
+    - The amount is [$75.25](expense_amount)
+    - Report an expense of [$200](expense_amount)
+    - I need to file an expense for [$300](expense_amount)
+    - The reimbursement is for [$400](expense_amount)
+    - My claim is for [$125](expense_amount)
+    - Please record [$175.75](expense_amount)
+    - I have an expense of [$500](expense_amount)
+    - File an expense for [$50](expense_amount)
+    - The cost incurred is [$60](expense_amount)
+    - I want to claim [$80](expense_amount)
+    - It's a [$90](expense_amount) expense
+    - The reported amount is [$110](expense_amount)
+    - I need to report [$220](expense_amount)
+    - My expense total is [$330](expense_amount)
+    - Please process [$440](expense_amount)
+    - I need to submit [$550](expense_amount)
+    - Expense amount is [$660](expense_amount)
+    - The claim should be [$770](expense_amount)
+
+# -------------------------
+# Request Intents
+# These intents are explicitly for requesting support or service actions.
+# -------------------------
+- intent: it_support_request
+  examples: |
+    - I need support from the IT team
+    - My laptop isn't working; I need IT help
+    - Requesting assistance for my computer issue
+    - I need help with my laptop
+    - Can someone from IT support me?
+    - I require IT support immediately
+    - Please assist me with an IT problem
+    - My computer is acting up, need IT help
+    - Help! My device is malfunctioning
+    - I need technical support for my workstation
+    - Requesting IT assistance for a hardware problem
+    - I need IT support to fix my computer
+    - Please send IT support for my system
+    - I require help with my PC
+    - My system is unresponsive, need IT help
+    - I need IT to resolve my technical issue
+    - Requesting immediate IT assistance
+    - I need help with IT issues right away
+    - My device is not functioning properly, I need IT support
+    - I need assistance from the IT department
+
+- intent: expense_report_submission
+  examples: |
+    - I need to submit travel expenses
+    - Expense report for client dinner
+    - Reimbursement for office supplies
+    - Submit $150 transportation claim
+    - File $75 meal expense
+    - Need to report $200 hotel cost
+    - Expense submission for training materials
+    - Reimbursement request for $300
+    - I have expenses to submit for a conference
+    - Report my travel expense of $250
+    - I want to file an expense for $180
+    - Please process an expense claim for $220
+    - I need to submit a claim for $130
+    - Expense report submission for $400
+    - Reimbursement of $500 is required
+    - Please record an expense of $350
+    - I want to file a claim for $275
+    - Submit an expense for $125
+    - I have an expense claim of $600
+    - File a reimbursement request for $700
+
+- intent: meeting_room_booking
+  examples: |
+    - Book conference room A
+    - Reserve boardroom for 10 people
+    - Need meeting space tomorrow
+    - Schedule war room for Friday
+    - Book video conference room
+    - Reserve training room
+    - Need auditorium booking
+    - Schedule team collaboration space
+    - Book the meeting room for a presentation
+    - Reserve the conference hall for a meeting
+    - I want to book a room for a workshop
+    - Schedule a meeting in the main hall
+    - I'd like to book a room for brainstorming
+    - Reserve a space for an interview
+    - I need a meeting room for a client call
+    - Can you reserve a room for 15 people?
+    - Book a meeting room for tomorrow morning
+    - Reserve the small conference room
+    - I want to schedule a meeting in room 101
+    - Please book the executive boardroom
+
+- intent: inform_using_rag
+  examples: |
+    - What is the purpose of the State Merit System, and how does it work?
+    - How does the Merit System protect my rights as a permanent employee?
+    - What are the key components of the Code of Ethics?
+    - How do I know if a situation might represent a conflict of interest?
+    - What guidelines should I follow regarding the acceptance of gifts and gratuities?
+    - What defines fraud, waste, and abuse in health care programs according to this handbook?
+    - How does the federal False Claims Act apply to our work at MDH?
+    - What penalties can be imposed for submitting false or fraudulent claims?
+    - How can I report suspected fraud, waste, or abuse within the organization?
+    - What protections are provided to whistleblowers under the law?
+    - What is the process for filing a complaint if I experience retaliation for reporting misconduct?
+    - What equal employment opportunity policies are in place at MDH?
+    - Who should I contact if I believe I’ve experienced discrimination or harassment?
+    - How are performance appraisals conducted for new and existing employees?
+    - What is expected during the probationary period?
+    - How long is the minimum probationary period for employees in different salary grades?
+    - What criteria are used to evaluate performance during the appraisal process?
+    - What are my standard working hours and expectations for punctuality?
+    - How is my lunch break determined, and is it mandatory?
+    - How is overtime managed and compensated?
+    - What are the guidelines for earning compensatory time off?
+    - How are salary increments determined and applied?
+    - What is the increment schedule based on years of service?
+    - How does the reclassification process work if my job duties change?
+    - What qualifications must I meet for a non-competitive promotion?
+    - How are promotions decided when there is a vacancy?
+    - What types of employee benefits and services are available?
+    - How does the Innovative Idea and Incentive Performance Awards Program operate?
+    - What health care plan options does MDH offer?
+    - How can I enroll in a State Health program as a new employee?
+    - What is the process for changing my health insurance coverage if my family status changes?
+    - How do I obtain a state identification card, and what is the process if I lose it?
+    - What is the policy on reporting absences or tardiness?
+    - How should I notify my supervisor if I am sick or absent?
+    - What procedures are in place for reporting unscheduled absences?
+    - How are holidays determined and observed within the organization?
+    - What are the guidelines for using Personal Leave?
+    - Can Personal Leave be accumulated over time?
+    - How is Annual Leave (Vacation) accrued and what are the limits?
+    - What is the policy regarding Sick Leave accrual and its proper use?
+    - What is the process for requesting leave of absence without pay?
+    - What provisions are made for Military Leave for eligible employees?
+    - How is Accident Leave calculated for disabling injuries?
+    - What is the procedure for taking leave for Jury Duty?
+    - How are performance-related disciplinary actions handled?
+    - What is the grievance process if I have a dispute with my supervisor?
+    - What steps are involved in the formal grievance process?
+    - How can I appeal a decision if I disagree with the outcome of a grievance?
+    - What employee counseling resources are available if I need support?
+    - How should I proceed if I have questions about any of the policies outlined in the handbook?
+
+- intent: employee_complaint
+  examples: |
+    - Reporting harassment incident
+    - Safety concern in workplace
+    - Unfair treatment complaint
+    - Discrimination report
+    - Ethical violation concern
+    - Manager conflict issue
+    - Workplace environment complaint
+    - Reporting policy violation
+    - I want to report a grievance
+    - There is a problem with my supervisor
+    - I have a complaint about workplace safety
+    - Reporting issues with colleague behavior
+    - Unjust treatment in the office
+    - I need to file a complaint against management
+    - There is unfair favoritism happening
+    - I have an issue with the work environment
+    - My complaint is regarding harassment
+    - I want to report discrimination
+    - There is a breach of ethics in my department
+    - I need to report a conflict of interest
+
+
+- intent: create_new_list
+  examples: |
+    - Create a new list called [IT Support](list_name) on my board.
+    - Please add a list named [Marketing Tasks](list_name) to my board.
+    - I need a new list titled [New Projects](list_name) on the board.
+    - Can you create a list called [HR Policies](list_name) on my board?
+    - Set up a new list named [Product Launch](list_name) on my board.
+    - Add a list [Urgent Tasks](list_name) to the board.
+    - I want to create a list called [Ideas](list_name) on my project board.
+    - Create a list named [Development](list_name) on the board.
+    - Add a new list [Backlog](list_name) for pending tasks.
+    - Please add a list [Weekly Review](list_name) to my board.
+    - Can you add a list titled [Client Requests](list_name) to my board?
+    - I require a list named [Bug Reports](list_name) on my board.
+    - Please create a list called [To-Do](list_name) for my tasks.
+    - I want a list called [Follow Ups](list_name) on my board.
+    - Generate a new list labeled [Team Feedback](list_name) on my board.
+    - Can you set up a list titled [Project Milestones](list_name) on the board?
+    - Please create a list [Daily Tasks](list_name) for organizing work.
+    - I need to add a list named [Priority Items](list_name) to my board.
+    - Create a new list called [Upcoming Deadlines](list_name) on my board.
+    - Add a list titled [Internal Announcements](list_name) to my project board.
+
+- intent: add_card_to_list
+  examples: |
+    - Add a card named [First Task](card_title) in the [IT Support](list_name) list.
+    - Create a card [Prepare Report](card_title) in the [Marketing Tasks](list_name) list.
+    - I want to add a card [Budget Review](card_title) to the [New Projects](list_name) list.
+    - Please add a card called [Client Meeting](card_title) in the [HR Policies](list_name) list.
+    - Insert a card titled [Setup New Laptop](card_title) in the [IT Support](list_name) list.
+    - Create a card [Update Website](card_title) under the [Development](list_name) list.
+    - Add a new card [Plan Product Launch](card_title) to the [Product Launch](list_name) list.
+    - Please create a card [Design Mockup](card_title) in the [Ideas](list_name) list.
+    - Add a card named [Weekly Standup](card_title) in the [Weekly Review](list_name) list.
+    - I need a card [Team Brainstorm](card_title) added to the [Backlog](list_name) list.
+    - Add a card called [Client Follow-Up](card_title) in the [Sales Leads](list_name) list.
+    - Create a card [Q3 Financial Review](card_title) in the [Finance](list_name) list.
+    - I want to add a card [Product Testing](card_title) to the [Quality Assurance](list_name) list.
+    - Please add a card [Research Insights](card_title) in the [Research & Development](list_name) list.
+    - Insert a card titled [Social Media Campaign](card_title) in the [Marketing](list_name) list.
+    - Create a card [Website Redesign](card_title) under the [IT Projects](list_name) list.
+    - Add a new card [Customer Feedback](card_title) to the [User Reviews](list_name) list.
+    - Please create a card [Schedule Interview](card_title) in the [Recruitment](list_name) list.
+    - Add a card called [Server Maintenance](card_title) in the [IT Support](list_name) list.
+    - I need a card [Project Wrap-Up](card_title) added to the [Completed Tasks](list_name) list.
+
+- intent: add_checklist_to_card
+  examples: |
+    - Add a checklist with tasks [Subtask 1, Subtask 2](checklist_items) to the card [First Task](card_title).
+    - Create a checklist on the card [Client Meeting](card_title) with items [Agenda, Follow-up](checklist_items).
+    - Please add a checklist to the card [Budget Review](card_title) containing [Review figures, Prepare summary](checklist_items).
+    - I need to attach a checklist with [Step 1, Step 2](checklist_items) on the card [Setup New Laptop](card_title).
+    - Insert a checklist titled [Checklist](checklist_items) with tasks [Task A, Task B](checklist_items) on my card [Design Mockup](card_title).
+    - Add a checklist with [Design draft, Final review](checklist_items) to the card [Update Website](card_title).
+    - Create a checklist with items [Prepare slides, Confirm location](checklist_items) on the card [Team Brainstorm](card_title).
+    - Attach a checklist [Research, Development, Testing](checklist_items) to the card [Plan Product Launch](card_title).
+    - Please add a checklist with [Outline, Write content](checklist_items) on the card [Prepare Report](card_title).
+    - Insert a checklist [Idea validation, Feedback](checklist_items) on the card [Design Mockup](card_title).
+    - Add a checklist with [Gather requirements, Draft document](checklist_items) to the card [Project Proposal](card_title).
+    - Create a checklist on the card [Event Planning](card_title) with items [Book venue, Arrange catering](checklist_items).
+    - Please attach a checklist with [Compile data, Analyze results](checklist_items) on the card [Data Review](card_title).
+    - Insert a checklist titled [Pre-launch Steps](checklist_items) with tasks [Finalize design, Test functionality](checklist_items) on my card [Product Launch](card_title).
+    - Add a checklist with [Email follow-up, Schedule meeting](checklist_items) to the card [Client Outreach](card_title).
+    - Create a checklist with items [Draft agenda, Confirm speakers](checklist_items) on the card [Conference Call](card_title).
+    - Attach a checklist [Review proposal, Get approvals](checklist_items) to the card [Project Approval](card_title).
+    - Please add a checklist with [Set objectives, Define metrics](checklist_items) on the card [Performance Review](card_title).
+    - Insert a checklist [Plan budget, Secure funding](checklist_items) on the card [New Initiative](card_title).
+    - Add a checklist with [Identify risks, Develop mitigation plan](checklist_items) to the card [Risk Management](card_title).

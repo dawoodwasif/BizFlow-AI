@@ -1,0 +1,255 @@
+version: "3.1"
+
+stories:
+  # IT Support Stories
+- story: IT Support Flow - Simple
+  steps:
+    - intent: it_support_request
+    - action: utter_ask_employee_id
+    - intent: inform_employee_id
+      entities:
+        - employee_id
+    - action: utter_ask_issue_details
+    - intent: inform_issue
+      entities:
+        - issue
+    - action: action_create_it_ticket
+    - action: utter_it_ticket_confirmation
+
+- story: IT Support Flow - No request
+  steps:
+    - intent: inform_issue
+      entities:
+        - issue
+    - action: utter_ask_employee_id
+    - intent: inform_employee_id
+      entities:
+        - employee_id
+    - action: action_create_it_ticket
+    - action: utter_it_ticket_confirmation
+
+- story: IT Support Flow - Interruption & Recovery
+  steps:
+    - intent: it_support_request
+    - action: utter_ask_employee_id
+    - intent: inform_employee_id
+      entities:
+        - employee_id
+    - action: utter_ask_issue_details
+    - intent: greet
+    - action: utter_greet
+    - intent: inform_issue
+      entities:
+        - issue
+    - action: action_create_it_ticket
+    - action: utter_it_ticket_confirmation
+
+  # Knowledge Search (via RAG)
+- story: Knowledge Search Flow - Simple
+  steps:
+    - intent: inform_using_rag
+    - action: action_rag_search
+
+- story: Knowledge Search Flow - Follow-Up
+  steps:
+    - intent: inform_using_rag
+    - action: action_rag_search
+    - intent: inform_using_rag
+    - action: action_rag_search
+
+  # Expense Reporting Stories
+- story: Expense Reporting Flow - Single Submission
+  steps:
+    - intent: expense_report_submission
+    - action: utter_ask_expense_amount
+    - intent: inform_expense_amount
+      entities:
+        - expense_amount
+    - action: action_submit_expense_report
+    - action: utter_expense_report_confirmation
+
+- story: Expense Reporting Flow - Multiple Submissions
+  steps:
+    - intent: expense_report_submission
+    - action: utter_ask_expense_amount
+    - intent: inform_expense_amount
+      entities:
+        - expense_amount
+    - action: action_submit_expense_report
+    - action: utter_expense_report_confirmation
+    - intent: expense_report_submission
+    - action: utter_ask_expense_amount
+    - intent: inform_expense_amount
+      entities:
+        - expense_amount
+    - action: action_submit_expense_report
+    - action: utter_expense_report_confirmation
+
+- story: Expense Reporting Flow - Incorrect Amount then Correction
+  steps:
+    - intent: expense_report_submission
+    - action: utter_ask_expense_amount
+    - intent: inform_expense_amount
+      entities:
+        - expense_amount
+    - action: action_submit_expense_report
+    - action: utter_expense_report_confirmation
+
+  # Meeting Room Booking Stories
+- story: Meeting Booking Flow - Standard
+  steps:
+    - intent: meeting_room_booking
+    - action: utter_ask_meeting_date
+    - intent: inform_meeting_date
+      entities:
+        - meeting_date
+    - action: utter_ask_meeting_time
+    - intent: inform_meeting_time
+      entities:
+        - meeting_time
+    - action: action_book_meeting_room
+    - action: utter_meeting_room_booking_confirmation
+
+- story: Meeting Booking Flow - Early Date Error then Correction
+  steps:
+    - intent: meeting_room_booking
+    - action: utter_ask_meeting_date
+    - intent: inform_meeting_date
+      entities:
+        - meeting_date
+    - action: utter_ask_meeting_date
+    - intent: inform_meeting_date
+      entities:
+        - meeting_date
+    - action: utter_ask_meeting_time
+    - intent: inform_meeting_time
+      entities:
+        - meeting_time
+    - action: action_book_meeting_room
+    - action: utter_meeting_room_booking_confirmation
+
+- story: Meeting Booking Flow - Combined Date and Time
+  steps:
+    - intent: meeting_room_booking
+    - action: utter_ask_meeting_date
+    - intent: inform_meeting_date
+      entities:
+        - meeting_date
+    - action: utter_ask_meeting_time
+    - intent: inform_meeting_time
+      entities:
+        - meeting_time
+    - action: action_book_meeting_room
+    - action: utter_meeting_room_booking_confirmation
+
+  # HR Complaint Escalation Stories
+- story: HR Complaint Escalation Flow - Standard
+  steps:
+    - intent: employee_complaint
+    - action: action_escalate_to_hr
+    - action: utter_acknowledge_complaint
+
+- story: HR Complaint Escalation Flow - Repeat Complaint
+  steps:
+    - intent: employee_complaint
+    - action: action_escalate_to_hr
+    - action: utter_acknowledge_complaint
+    - intent: employee_complaint
+    - action: action_escalate_to_hr
+    - action: utter_acknowledge_complaint
+
+  # Greetings and Farewells
+- story: Greeting Flow
+  steps:
+    - intent: greet
+    - action: utter_greet
+
+- story: Goodbye Flow
+  steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+  # Mixed Conversation Stories
+- story: Mixed Conversation - IT Support then Knowledge Search
+  steps:
+    - intent: it_support_request
+    - action: utter_ask_employee_id
+    - intent: inform_employee_id
+      entities:
+        - employee_id
+    - action: utter_ask_issue_details
+    - intent: inform_issue
+      entities:
+        - issue
+    - action: action_create_it_ticket
+    - action: utter_it_ticket_confirmation
+    - intent: inform_using_rag
+    - action: action_rag_search
+
+- story: Mixed Conversation - Greeting, Expense, Meeting & Goodbye
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: expense_report_submission
+    - action: utter_ask_expense_amount
+    - intent: inform_expense_amount
+      entities:
+        - expense_amount
+    - action: action_submit_expense_report
+    - action: utter_expense_report_confirmation
+    - intent: meeting_room_booking
+    - action: utter_ask_meeting_date
+    - intent: inform_meeting_date
+      entities:
+        - meeting_date
+    - action: utter_ask_meeting_time
+    - intent: inform_meeting_time
+      entities:
+        - meeting_time
+    - action: action_book_meeting_room
+    - action: utter_meeting_room_booking_confirmation
+    - intent: goodbye
+    - action: utter_goodbye
+
+- story: Trello Task Flow - Create New List
+  steps:
+    - intent: create_new_list
+    - action: utter_ask_list_name
+    - intent: create_new_list
+      entities:
+        - list_name
+    - action: action_create_new_list
+
+  # Trello Task Flow - Add Card to List
+- story: Trello Task Flow - Add Card to List
+  steps:
+    - intent: add_card_to_list
+    - action: utter_ask_list_name
+    - intent: add_card_to_list
+      entities:
+        - list_name
+    - action: utter_ask_card_title
+    - intent: add_card_to_list
+      entities:
+        - card_title
+    - action: action_add_card_to_list
+
+  # Trello Task Flow - Add Checklist to Card
+- story: Trello Task Flow - Add Checklist to Card
+  steps:
+    - intent: add_checklist_to_card
+    - action: utter_ask_card_title
+    - intent: add_checklist_to_card
+      entities:
+        - card_title
+    - action: utter_ask_checklist_items
+    - intent: add_checklist_to_card
+      entities:
+        - checklist_items
+    - action: action_add_checklist_to_card
+
+
+- story: Handle fallback scenario
+  steps:
+    - intent: nlu_fallback
+    - action: action_default_fallback

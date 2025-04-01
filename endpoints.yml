@@ -1,0 +1,23 @@
+# endpoints.yml for BizFlow AI
+
+action_endpoint:
+  url: "http://localhost:5055/webhook"
+
+rest:
+  url: "http://localhost:5005/webhooks/rest/webhook"
+
+log_level: TRACE
+
+model_groups:
+  - id: openai-direct
+    models:
+      - provider: openai
+        model: gpt-4o-mini
+        api_key: ${OPENAI_API_KEY}
+        temperature: 0.1
+
+  - id: openai-embeddings
+    models:
+      - provider: openai
+        model: text-embedding-3-small
+        api_key: ${OPENAI_API_KEY}

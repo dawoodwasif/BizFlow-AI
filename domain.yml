@@ -1,0 +1,190 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - inform_employee_id
+  - inform_issue
+  - inform_meeting_date
+  - inform_meeting_time
+  - inform_expense_amount
+  - inform_using_rag
+  - it_support_request
+  - expense_report_submission
+  - meeting_room_booking
+  - employee_complaint
+  - nlu_fallback
+  - create_new_list
+  - add_card_to_list
+  - add_checklist_to_card
+
+entities:
+  - employee_id
+  - department
+  - issue
+  - expense_amount
+  - meeting_date
+  - meeting_time
+  - list_name
+  - card_title
+  - checklist_items
+
+slots:
+  employee_id:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: employee_id
+
+  issue:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: issue
+
+  ticket_created:
+    type: bool
+    influence_conversation: true
+    initial_value: false
+    mappings:
+      - type: from_trigger_intent
+        intent: it_support_request
+        value: true
+
+  ticket_id:
+    type: text
+    influence_conversation: false
+    mappings: []
+
+  expense_amount:
+    type: float
+    mappings:
+      - type: from_entity
+        entity: expense_amount
+
+  meeting_date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: meeting_date
+
+  meeting_time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: meeting_time
+
+  expense_report_submitted:
+    type: bool
+    influence_conversation: false
+    initial_value: false
+    mappings: []
+
+  meeting_room_booked:
+    type: bool
+    influence_conversation: false
+    initial_value: false
+    mappings: []
+
+  search_result:
+    type: text
+    influence_conversation: false
+    mappings: []
+
+  case_id:
+    type: text
+    influence_conversation: false
+    initial_value: null
+    mappings: []
+
+  confirmation_code:
+    type: text
+    influence_conversation: false
+    initial_value: null
+    mappings: []
+
+  list_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: list_name
+
+  card_title:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: card_title
+
+  checklist_items:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: checklist_items
+
+actions:
+  - action_create_it_ticket
+  - action_submit_expense_report
+  - action_book_meeting_room
+  - action_default_fallback
+  - action_escalate_to_hr
+  - action_rag_search
+  - action_create_new_list
+  - action_add_card_to_list
+  - action_add_checklist_to_card
+
+responses:
+  utter_greet:
+    - text: "Hello, welcome to BizFlow AI. How can I assist you today?"
+    - text: "Hi there, I'm BizFlow AI. What business task can I help you with today?"
+  
+  utter_goodbye:
+    - text: "Goodbye! Have a productive day."
+    - text: "Bye! Feel free to reach out again for any assistance."
+  
+  utter_it_ticket_confirmation:
+    - text: "Your IT support ticket {ticket_id} has been created successfully. You will receive an update shortly."
+  
+  utter_expense_report_confirmation:
+    - text: "Expense report for {expense_amount} submitted successfully."
+  
+  utter_meeting_room_booking_confirmation:
+    - text: "Meeting room booked for {meeting_date} at {meeting_time}. Confirmation code: {confirmation_code}"
+  
+  utter_knowledge_search_result:
+    - text: "I found the following information: {search_result}"
+  
+  utter_ask_employee_id:
+    - text: "Please provide your Employee ID:"
+  
+  utter_ask_issue_details:
+    - text: "Could you please describe the technical issue you're experiencing?"
+  
+  utter_ask_expense_amount:
+    - text: "What is the total expense amount you wish to report? (Please include currency)"
+  
+  utter_ask_meeting_date:
+    - text: "On which date would you like to book the meeting room? (YYYY-MM-DD format)"
+  
+  utter_ask_meeting_time:
+    - text: "At what time should the meeting room be reserved? (HH:MM format)"
+  
+  utter_acknowledge_complaint:
+    - text: "Thank you for sharing your concern. Your complaint has been recorded and will be addressed promptly. Case ID: HR-{case_id}"
+  
+  utter_ask_list_name:
+    - text: "What is the name of the list you would like to create or use?"
+  
+  utter_ask_card_title:
+    - text: "What is the title of the card you want to add?"
+  
+  utter_ask_checklist_items:
+    - text: "Please provide the checklist items separated by commas."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
