@@ -1,7 +1,5 @@
 # BizFlow AI
 
-This project is made exclusively for the Rasa Agent Building Challenge.
-
 ## Introduction
 
 Welcome to BizFlow AI! This enterprise-grade conversational assistant has been developed using the open source machine learning framework [Rasa](https://rasa.com/). BizFlow AI is designed to streamline internal business processes by handling both structured (transactional) workflows and open-ended (informational) queries. Whether you need to raise an IT support ticket, submit an expense report, book a meeting room, or retrieve the latest HR policy, BizFlow AI is here to assist.
